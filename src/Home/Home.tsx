@@ -10,7 +10,7 @@ const Home: React.FC = () => {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
-    navigate('/dev');
+    navigate('/dev', { state: { position: position } });
   };
 
   return (
