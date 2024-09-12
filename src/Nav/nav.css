@@ -1,0 +1,18 @@
+.navContainer {
+  height: 5rem;
+  width: 100%;
+  background-color: #DED9F9;
+  border-bottom: 3px solid #6f55ff;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.button {
+  background-color: transparent;
+  color: #6f55ff;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+}

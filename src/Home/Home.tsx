@@ -3,11 +3,13 @@ import './home.css';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Home: React.FC = () => {
-  const [name, setName] = useState<string>('');
+  const [firstName, setFirstName] = useState<string>('');
+  const [lastName, setLastName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
-  const [resume, setResume] = useState<unknown>(null);
   const [position, setPosition] = useState<string>('');
   const navigate = useNavigate();
+
+  const backendEndpoint = "https://code-challenge-backend.onrender.com"
 
   const handleNavigate = () => {
     navigate('/dev', { state: { position: position } });
@@ -20,45 +22,72 @@ const Home: React.FC = () => {
         Development Department.
       </h3>
       <h4 style={{ color: 'white' }}>Please begin the application below!</h4>
-      <p style={{ textAlign: 'center', color: 'white' }}>
+      <p style={{ textAlign: 'center', color: 'white', marginBottom: '2rem' }}>
         After filling out your basic information, you will be taken to an
         assessment. This assessment is not timed, and can be paused and saved at
         any time.
       </p>
       <div className="grid">
         <label
-          style={{ gridColumn: '1/2', gridRow: '1/2', textAlign: 'right' }}
-          htmlFor="name"
+          style={{
+            gridColumn: '1/2',
+            gridRow: '1/2',
+            textAlign: 'center',
+            width: '15rem',
+            paddingTop: '2%'
+          }}
+          htmlFor="firstName"
         >
-          Your Name:
+          First Name:
         </label>
         <input
+          className="inputStyles"
           type="text"
-          onChange={e => setName(e.target.value)}
-          value={name}
+          onChange={e => setFirstName(e.target.value)}
+          value={firstName}
+        />
+
+        <label
+          style={{
+            gridColumn: '1/2',
+            gridRow: '2/3',
+            textAlign: 'center',
+            width: '15rem',
+            paddingTop: '2%'
+          }}
+          htmlFor="lastName"
+        >
+          Last Name:
+        </label>
+        <input
+          className="inputStyles"
+          type="text"
+          onChange={e => setLastName(e.target.value)}
+          value={lastName}
         />
 
         <label
           htmlFor="email"
-          style={{ gridColumn: '1/2', gridRow: '2/3', textAlign: 'right' }}
+          style={{
+            gridColumn: '1/2',
+            gridRow: '3/4',
+            textAlign: 'center',
+            width: '15rem',
+            paddingTop: '2%'
+          }}
         >
           Your Email:
         </label>
         <input
+          className="inputStyles"
           type="text"
           onChange={e => setEmail(e.target.value)}
           value={email}
         />
 
-        <label
-          htmlFor="resume"
-          style={{ gridColumn: '1/2', gridRow: '3/4', textAlign: 'right' }}
-        >
-          Your Resume:
+        <label htmlFor="dropdown" style={{ fontSize: '14px' }}>
+          Which position are you applying for?
         </label>
-        <input type="file" onChange={e => setResume(e.target.value)} />
-
-        <label htmlFor="dropdown">Which position are you applying for?</label>
         <form action="select">
           <select
             name="positions"
@@ -76,9 +105,11 @@ const Home: React.FC = () => {
             <option value="game-dev">Game Developer</option>
           </select>
         </form>
-        <button className="continue" onClick={handleNavigate}>
-          Continue
-        </button>
+        <div className="buttonContainer">
+          <button className="continue" onClick={handleNavigate}>
+            Continue
+          </button>
+        </div>
       </div>
     </div>
   );
