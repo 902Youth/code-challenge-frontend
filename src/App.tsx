@@ -4,6 +4,7 @@ import Home from './Home/Home';
 import Dev from './Dev/Dev';
 import './App.css';
 import Nav from './Nav/Nav';
+import Login from './Login/Login';
 
 const App: React.FC = () => {
   return (
@@ -11,6 +12,7 @@ const App: React.FC = () => {
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/dev" element={<Dev />} />
       </Routes>
     </>
