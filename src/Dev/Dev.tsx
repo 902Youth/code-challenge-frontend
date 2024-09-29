@@ -16,7 +16,7 @@ const editorRef = useRef<editor.IStandaloneCodeEditor | null>(null);
 
 const handleSave = () =>{
     const valueToSave = editorRef?.current?.getValue();
-    console.log(valueToSave);
+    // console.log(valueToSave);
 }
 
 const handleEditorDidMount: OnMount = (editor, monaco) => {

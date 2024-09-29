@@ -9,16 +9,21 @@ const Login: React.FC = () => {
   const [input, setInput] = useState('');
   const navigate = useNavigate()
 
+  function setLoginTimestamp() {
+    localStorage.setItem('loginTimestamp', JSON.stringify(Date.now()));
+  }
+
   useEffect(() => {
     fetch(`${api}/user/findAll`, {
       method: 'GET'
     })
       .then(response => response.json())
-      .then(data => console.log(data))
+      // .then(data => console.log(data))
       .catch(error => console.error('Error:', error));
   }, [])
 
   const handleOnClick = () => {
+    // console.log('clicked')
     if (firstName.length > 0 && lastName.length > 0 && input.length > 0) {
       fetch(`${api}/user/findUserAndValidate`, {
         method: 'POST',
@@ -39,7 +44,8 @@ const Login: React.FC = () => {
           }
         })
         .then(data => {
-          console.log(data);
+          setLoginTimestamp()
+          localStorage.setItem("loggedInUser", JSON.stringify(data));
           navigate("/dev");
         })
         .catch(error => console.error('Error:', error));
